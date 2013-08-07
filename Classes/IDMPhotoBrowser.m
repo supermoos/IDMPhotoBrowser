@@ -1090,7 +1090,9 @@ BOOL isFirstViewLoad = YES;
     
     CGFloat alpha = hidden ? 0 : 1;
 	[_toolbar setAlpha:alpha];
-   // [_doneButton setAlpha:alpha];
+    if (permanent) {
+        [_doneButton setAlpha:alpha];
+    }
     for (UIView *v in captionViews) v.alpha = alpha;
 	if (animated) [UIView commitAnimations];
 	
