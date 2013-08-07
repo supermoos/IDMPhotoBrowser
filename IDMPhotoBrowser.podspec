@@ -7,8 +7,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author       = { "Appkraft" => "all@appkraft.net" }
   s.source       = { 
-    :git => "https://github.com/appkraft/IDMPhotoBrowser.git", 
-    :tag => "1.0.2"
+    :git => "https://github.com/lasseyls/IDMPhotoBrowser.git"
   }
 
   s.platform     = :ios, '5.0'
