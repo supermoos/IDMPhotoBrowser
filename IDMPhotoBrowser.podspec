@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "IDMPhotoBrowser"
-  s.version      = "1.0.2"
+  s.version      = "1.1.1"
   s.summary      = "IDMPhotoBrowser."
   s.homepage     = "https://github.com/appkraft/IDMPhotoBrowser"
 
@@ -15,7 +15,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes/*.{h,m}'
   s.resources = 'Classes/IDMPhotoBrowser.bundle'
   
-  s.dependency 'AFNetworking', '~> 1.3.1'
   s.dependency 'DACircularProgress', '~> 2.1.0'
   s.dependency 'SVProgressHUD', '~> 0.9'
 
