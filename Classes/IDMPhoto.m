@@ -8,15 +8,16 @@
 
 #import "IDMPhoto.h"
 #import "IDMPhotoBrowser.h"
+#import "SDWebImageManager.h"
 
 // Private
 @interface IDMPhoto () {
     // Image Sources
     NSString *_photoPath;
-
+    
     // Image
     UIImage *_underlyingImage;
-
+    
     // Other
     NSString *_caption;
     BOOL _loadingInProgress;
@@ -34,7 +35,7 @@
 @implementation IDMPhoto
 
 // Properties
-@synthesize underlyingImage = _underlyingImage, 
+@synthesize underlyingImage = _underlyingImage,
 photoURL = _photoURL,
 caption = _caption;
 
@@ -93,23 +94,42 @@ caption = _caption;
             [self performSelectorInBackground:@selector(loadImageFromFileAsync) withObject:nil];
         } else if (_photoURL) {
             // Load async from web (using AFNetworking)
-            NSURLRequest *request = [NSURLRequest requestWithURL:_photoURL];
+            // NSURLRequest *request = [NSURLRequest requestWithURL:_photoURL];
             
-            AFImageRequestOperation *operation = [AFImageRequestOperation
-                                                  imageRequestOperationWithRequest:request
-                                                  success:^(UIImage *image) {
-                                                      self.underlyingImage = image;
-                                                      [self performSelectorOnMainThread:@selector(imageLoadingComplete) withObject:nil waitUntilDone:NO];
-                                                  }];
             
-            [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-                CGFloat progress = ((CGFloat)totalBytesRead)/((CGFloat)totalBytesExpectedToRead);
-                if (self.progressUpdateBlock) {
-                    self.progressUpdateBlock(progress);
-                }
-            }];
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadWithURL:_photoURL
+                             options:0
+                            progress:^(NSUInteger receivedSize, long long expectedSize)
+             {
+                 CGFloat progress = ((CGFloat)receivedSize)/((CGFloat)expectedSize);
+                 if (self.progressUpdateBlock) {
+                     self.progressUpdateBlock(progress);
+                 }
+             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+                 if (image && finished)
+                 {
+                     self.underlyingImage = image;
+                     [self performSelectorOnMainThread:@selector(imageLoadingComplete) withObject:nil waitUntilDone:NO];
+                 }
+             }];
             
-            [operation start];
+            
+            //            AFImageRequestOperation *operation = [AFImageRequestOperation
+            //                                                  imageRequestOperationWithRequest:request
+            //                                                  success:^(UIImage *image) {
+            //                                                      self.underlyingImage = image;
+            //                                                      [self performSelectorOnMainThread:@selector(imageLoadingComplete) withObject:nil waitUntilDone:NO];
+            //                                                  }];
+            //
+            //            [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+            //                CGFloat progress = ((CGFloat)totalBytesRead)/((CGFloat)totalBytesExpectedToRead);
+            //                if (self.progressUpdateBlock) {
+            //                    self.progressUpdateBlock(progress);
+            //                }
+            //            }];
+            //
+            //            [operation start];
         } else {
             // Failed - no source
             self.underlyingImage = nil;
@@ -121,7 +141,7 @@ caption = _caption;
 // Release if we can get it again from path or url
 - (void)unloadUnderlyingImage {
     _loadingInProgress = NO;
-
+    
 	if (self.underlyingImage && (_photoPath || _photoURL)) {
 		self.underlyingImage = nil;
 	}

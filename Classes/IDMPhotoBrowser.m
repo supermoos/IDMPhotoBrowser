@@ -310,7 +310,7 @@
         {
             self.view.backgroundColor = [UIColor colorWithWhite:(_useWhiteBackgroundColor ? 1 : 0) alpha:1];
             //self.view.backgroundColor = [UIColor colorWithPatternImage:[self getImageFromView:backgroundImageView]];
-            
+            [_doneButton setAlpha:1];
             CGFloat velocityY = (.35*[(UIPanGestureRecognizer*)sender velocityInView:self.view].y); 
             
             CGFloat finalX = firstX;
@@ -1087,7 +1087,9 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     CGFloat alpha = hidden ? 0 : 1;
 	[_toolbar setAlpha:alpha];
     if (permanent) {
-        [_doneButton setAlpha:alpha];
+    [_doneButton setAlpha:alpha];
+    } else {
+        [_doneButton setAlpha:1];
     }
     for (UIView *v in captionViews) v.alpha = alpha;
 	if (animated) [UIView commitAnimations];
