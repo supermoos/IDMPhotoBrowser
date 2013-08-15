@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AC098FC17BCE989009271D1 /* image_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AC098FA17BCE989009271D1 /* image_close.png */; };
+		0AC098FD17BCE989009271D1 /* image_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AC098FB17BCE989009271D1 /* image_close@2x.png */; };
 		0EA380351573EA53003F4582 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA380341573EA53003F4582 /* ImageIO.framework */; };
 		4C6F979214AF734900F8389A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6F979114AF734900F8389A /* UIKit.framework */; };
 		4C6F979414AF734900F8389A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6F979314AF734900F8389A /* Foundation.framework */; };
@@ -54,6 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AC098FA17BCE989009271D1 /* image_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_close.png; sourceTree = "<group>"; };
+		0AC098FB17BCE989009271D1 /* image_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_close@2x.png"; sourceTree = "<group>"; };
 		0EA380341573EA53003F4582 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4C6F978D14AF734900F8389A /* PhotoBrowserDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBrowserDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6F979114AF734900F8389A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -249,6 +253,8 @@
 				D157494F178DB94900B0211A /* IDMCaptionView.m */,
 				D1574950178DB94900B0211A /* IDMPhoto.h */,
 				D1574951178DB94900B0211A /* IDMPhoto.m */,
+				0AC098FA17BCE989009271D1 /* image_close.png */,
+				0AC098FB17BCE989009271D1 /* image_close@2x.png */,
 				D1574952178DB94900B0211A /* IDMPhotoBrowser.bundle */,
 				D1574953178DB94900B0211A /* IDMPhotoBrowser.h */,
 				D1574954178DB94900B0211A /* IDMPhotoBrowser.m */,
@@ -385,6 +391,8 @@
 				D1574971178DB95300B0211A /* README.markdown in Resources */,
 				D1574972178DB95300B0211A /* LICENSE.txt in Resources */,
 				D1E6EFD317AC40C200D1F530 /* Localizable.strings in Resources */,
+				0AC098FC17BCE989009271D1 /* image_close.png in Resources */,
+				0AC098FD17BCE989009271D1 /* image_close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
