@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "IDMPhotoBrowser"
-  s.version      = "1.1.1"
+  s.version      = "1.2.5"
   s.summary      = "IDMPhotoBrowser."
   s.homepage     = "https://github.com/appkraft/IDMPhotoBrowser"
 
